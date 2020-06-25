@@ -51,7 +51,7 @@ class Battle {
         Game.BattleScreenRegion.waitVanish(ImageLocator.Battle, 5.seconds)
 
         // Although it seems slow, make it no shorter than 1 sec to protect user with less processing power devices.
-        1.5.seconds.wait()
+        0.5.seconds.wait()
 
         hasClickedAttack = true
 
@@ -96,7 +96,7 @@ class Battle {
 
     fun performBattle() {
         ScreenshotManager.useSameSnapIn { onTurnStarted() }
-        2.seconds.wait()
+        0.5.seconds.wait()
 
         var wereNpsClicked = false
 

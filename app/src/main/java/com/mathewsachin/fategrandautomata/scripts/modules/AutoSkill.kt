@@ -77,7 +77,7 @@ class AutoSkill {
         val img = ImageLocator.Battle
 
         // slow devices need this. do not remove.
-        Game.BattleScreenRegion.waitVanish(img, 2.seconds)
+        Game.BattleScreenRegion.waitVanish(img, 0.5.seconds)
 
         Game.BattleScreenRegion.exists(img, Timeout)
     }
@@ -108,7 +108,7 @@ class AutoSkill {
             battle.clickAttack()
 
             // There is a delay after clicking attack before NP Cards come up. DON'T DELETE!
-            2.seconds.wait()
+            1.2.seconds.wait()
         }
 
         Location.click()

@@ -207,7 +207,7 @@ open class AutoBattle : EntryPoint() {
      */
     private fun result() {
         // Validator document https://github.com/29988122/Fate-Grand-Order_Lua/wiki/In-Game-Result-Screen-Flow for detail.
-        Game.ResultNextClick.click(55)
+        Game.ResultNextClick.click(20)
 
         // Checking if there was a Bond CE reward
         if (Game.ResultCeRewardRegion.exists(ImageLocator.Bond10Reward)) {
@@ -221,14 +221,12 @@ open class AutoBattle : EntryPoint() {
             Game.ResultNextClick.click(35)
         }
 
-        5.seconds.wait()
+        1.seconds.wait()
 
         // Friend request dialogue. Appears when non-friend support was selected this battle. Ofc it's defaulted not sending request.
         if (Game.ResultFriendRequestRegion.exists(ImageLocator.FriendRequest)) {
             Game.ResultFriendRequestRejectClick.click()
         }
-
-        1.seconds.wait()
 
         // Only for JP currently. Searches for the Continue option after select Free Quests
         if (Preferences.GameServer == GameServerEnum.Jp && Game.ContinueRegion.exists(

@@ -7,6 +7,10 @@ android {
     buildToolsVersion "29.0.3"
     ndkVersion "21.3.6528147"
 
+    lintOptions {
+        abortOnError false
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -16,8 +20,8 @@ android {
         applicationId "com.mathewsachin.fategrandautomata"
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode Integer.valueOf(System.env.FGA_VERSION_CODE ?: 1)
-        versionName(System.env.FGA_VERSION_NAME ?: "v0.1.0")
+        versionCode Integer.valueOf(3)
+        versionName("v0.1.2")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -37,29 +41,12 @@ android {
             keyAlias "fgadebug"
             keyPassword "123abc"
         }
-        release {
-            storeFile file("fgautomata.keystore")
-            storePassword System.env.KEYSTORE_PASS
-            keyAlias "fgautomata"
-            keyPassword System.env.KEYSTORE_PASS
-        }
     }
 
     buildTypes {
         debug {
             debuggable true
             applicationIdSuffix '.debug'
-            signingConfig signingConfigs.debug
-        }
-        release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-        }
-        fork {
-            initWith release
-            applicationIdSuffix '.fork'
             signingConfig signingConfigs.debug
         }
     }
